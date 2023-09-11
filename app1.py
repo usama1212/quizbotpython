@@ -33,6 +33,7 @@ from pywsd.lesk import cosine_lesk
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
