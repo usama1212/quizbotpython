@@ -1,28 +1,23 @@
-from flask import Flask, render_template, request
-import requests
+import os
+import nltk
 import json
-import re
 import random
+import openai
+import requests
+import re
+from googlesearch import search
+from flask import Flask, render_template, request, jsonify
 from nltk.corpus import wordnet as wn
 from pywsd.similarity import max_similarity
 from pywsd.lesk import adapted_lesk
-from pywsd.lesk import simple_lesk
-from pywsd.lesk import cosine_lesk
-from nltk.corpus import stopwords
-from nltk.tokenize import sent_tokenize
+import string
+from summarizer import Summarizer
 from flashtext import KeywordProcessor
 import pke
-import string
-import nltk
-# nltk.download('punkt')
-# nltk.download('stopwords')
-# nltk.download('popular')
-from summarizer import Summarizer
-from flask import jsonify
-import openai
-from googlesearch import search
-
+from nltk.corpus import stopwords
+from nltk.tokenize import sent_tokenize
 openai.api_key = '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'
+current_question_id = 0
 app = Flask(__name__)
 
 @app.route('/')
@@ -205,6 +200,156 @@ def get_distractors_conceptnet(word):
 
     return distractor_list
 
+
+def load_quiz_data(category):
+    try:
+        with open(os.path.join("OpenTriviaQA_JSON", f"{category}.json"), "r") as file:
+            quiz_data = json.load(file)
+        return quiz_data
+    except FileNotFoundError:
+        return []
+
+
+def process_user_input(user_input):
+    tokens = nltk.word_tokenize(user_input.lower())
+    return tokens[0]
+
+
+@app.route('/select_category', methods=['POST'])
+def select_category():
+    request_data = request.get_json()
+    category = request_data.get('category', None)
+
+    if not category:
+        return jsonify({"error": "Invalid input data."}), 400
+
+    categories = [file_name[:-5] for file_name in os.listdir("OpenTriviaQA_JSON") if file_name.endswith(".json")]
+    if category not in categories:
+        return jsonify({"error": "Invalid category name."}), 400
+
+    return jsonify({"message": f"Category '{category}' selected."})
+
+
+@app.route('/get_questions', methods=['POST'])
+def get_questions():
+    request_data = request.get_json()
+    category = request_data.get('category', None)
+
+    if not category:
+        return jsonify({"error": "Invalid input data."}), 400
+
+    quiz_data = load_quiz_data(category)
+    if not quiz_data:
+        return jsonify({"error": "No quiz data found for the selected category."}), 400
+
+    # Assign unique IDs to each question
+    for idx, question in enumerate(quiz_data):
+        question['id'] = idx
+
+    return jsonify({"questions": quiz_data})
+
+
+@app.route('/answer_question', methods=['POST'])
+def answer_question():
+    global current_question_id
+
+    request_data = request.get_json()
+    category = request_data.get('category', None)
+    user_answers = request_data.get('user_answers', None)
+
+    if not category or not user_answers:
+        return jsonify({"error": "Invalid input data."}), 400
+
+    quiz_data = load_quiz_data(category)
+    if not quiz_data:
+        return jsonify({"error": "No quiz data found for the selected category."}), 400
+    return jsonify(quiz_data)
+    import sys
+    sys.exit()
+    num_questions = min(10, len(quiz_data))
+    score = 0
+
+
+    for idx in range(current_question_id, current_question_id + num_questions):
+
+        if idx >= len(quiz_data):
+            break
+        user_answer = user_answers.get(str(quiz_data[idx]['id']), '').lower()
+
+        if user_answer == quiz_data[idx]['answer'].lower():
+            score += 1
+
+
+
+
+
+def generate_suggestions(incorrect_answers):
+    prompt = "For the questions you answered wrong:\n\n"
+    for idx, answer in enumerate(incorrect_answers):
+        prompt += f"{idx + 1}. Q: {answer['question']}\nYour answer: {answer['user_answer']}\n\n"
+
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+
+    return response.choices[0].text.strip()
+
+
+# Function to get relevant websites for topics
+def get_relevant_websites(topics):
+    websites_data = []
+    for topic in topics:
+        search_query = f"Best resources for learning {topic}"
+        search_results = search(search_query, num_results=5)
+
+        websites_list = list(search_results)  # Convert the generator to a list
+
+        websites_data.append({"topic": topic, "websites": websites_list})
+
+    return websites_data
+
+
+@app.route('/quiz_completed', methods=['POST'])
+def quiz_completed():
+    data = request.json
+    incorrect_answers = data.get('incorrect_answers', [])
+    topics = data.get('topics', [])
+
+    suggestions = generate_suggestions(incorrect_answers)
+    # suggestions = []
+    relevant_websites = get_relevant_websites(topics)
+
+    response = {
+        "suggestions": suggestions,
+        "relevant_websites": relevant_websites
+    }
+
+    return jsonify(response)
+
+
+@app.route('/generate_quiz', methods=['POST'])
+def generate_quiz():
+    try:
+        topic = request.json['topic']
+
+        # Modify the prompt as needed
+        prompt = """
+        tell me about sql.
+        """
+
+        response = openai.Completion.create(
+            engine="davinci",
+            prompt=prompt,
+            max_tokens=600
+        )
+
+        quiz = response.choices[0].text.strip()
+
+        return jsonify({'quiz': quiz})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 

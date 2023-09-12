@@ -1,0 +1,167 @@
+[
+    {
+        "question": "What does SQL stand for?",
+        "category": "SQL Programming",
+        "answer": "Structured Query Language",
+        "choices": [
+            "Structured Query Language",
+            "Sequential Query Language",
+            "Syntax Query Language",
+            "System Query Language"
+        ]
+    },
+    {
+        "question": "When was SQL commercially available?",
+        "category": "SQL Programming",
+        "answer": "1979",
+        "choices": [
+            "1979",
+            "1995",
+            "1970",
+            "1985"
+        ]
+    },
+    {
+        "question": "Which database type uses SQL?",
+        "category": "SQL Programming",
+        "answer": "Relational databases",
+        "choices": [
+            "Cloud databases",
+            "Time series databases",
+            "Relational databases",
+            "NoSQL databses"
+        ]
+    },
+    {
+        "question": "Which database is an example of a NoSQL database?",
+        "category": "SQL Programming",
+        "answer": "CouchDB",
+        "choices": [
+            "Microsoft SQL Server",
+            "Druid",
+            "Oracle Autonomous Database",
+            "CouchDB"
+        ]
+    },
+    {
+        "question": "What statement is used in SQL to delete existing records within a table?",
+        "category": "SQL Programming",
+        "answer": "DELETE statement",
+        "choices": [
+            "SELECT statement",
+            "UPDATE statement",
+            "INSERT statement",
+            "DELETE statement"
+        ]
+    },
+    {
+        "question": "Which SQL command is used to create an entirely new database?",
+        "category": "SQL Programming",
+        "answer": "CREATE DATABASE statement",
+        "choices": [
+            "CREATE DATABASE statement",
+            "DELETE TABLE statement",
+            "UPDATE DATABASE statement",
+            "INSERT TABLE statement"
+        ]
+    },
+    {
+        "question": "Which type of SQL command is used to control access to data within a database?",
+        "category": "SQL Programming",
+        "answer": "DCL (data control language) command",
+        "choices": [
+            "DCL (data control language) command",
+            "DML (data manipulation language) command",
+            "DDL (data definition language) command",
+            "DQL (data query language) command"
+        ]
+    },
+    {
+        "question": "Which type of databases tend to be horizontally scalable?",
+        "category": "SQL Programming",
+        "answer": "NoSQL databases",
+        "choices": [
+            "Stream databases",
+            "NoSQL databases",
+            "Cloud databases",
+            "SQL databases"
+        ]
+    },
+    {
+        "question": "What is SQL commonly used for?",
+        "category": "SQL Programming",
+        "answer": "Data storage and data processing on websites and applications",
+        "choices": [
+            "Analyzing and visualizing big data",
+            "Analyzing market environments for business decisions",
+            "Building computer systems software",
+            "Data storage and data processing on websites and applications"
+        ]
+    },
+    {
+        "question": "Which career path may benefit from SQL knowledge?",
+        "category": "SQL Programming",
+        "answer": "Data scientist",
+        "choices": [
+            "Business analyst",
+            "Data scientist",
+            "Software engineer",
+            "SEO analyst"
+        ]
+    },
+    {
+        "question": "What is the best way to retain SQL commands?",
+        "category": "SQL Programming",
+        "answer": "Practicing and using SQL in a database management system",
+        "choices": [
+            "Taking online courses and video tutorials",
+            "Attending SQL certification programs",
+            "Installing multiple SQL database management systems",
+            "Practicing and using SQL in a database management system"
+        ]
+    },
+    {
+        "question": "Which tool is used to write and interact with SQL?",
+        "category": "SQL Programming",
+        "answer": "'Microsoft\u2019s SQL Server Management Studio'",
+        "choices": [
+            "'Oracle\u2019s SQL developer'",
+            "'DataGrip'",
+            "'Microsoft\u2019s SQL Server Management Studio'",
+            "'SQL Workbench'"
+        ]
+    },
+    {
+        "question": "What is a common difference between SQL and NoSQL databases?",
+        "category": "SQL Programming",
+        "answer": "SQL databases are table-based, while NoSQL databases can be graph-based, document-based or wide column stores",
+        "choices": [
+            "NoSQL databases are best suited for multi-row transactions",
+            "'SQL databases tend to be easier for developers than NoSQL databases",
+            "SQL databases are table-based, while NoSQL databases can be graph-based, document-based or wide column stores",
+            "SQL databases are more often horizontally scalable than NoSQL databases."
+        ]
+    },
+    {
+        "question": "Which companies or platforms use SQL?",
+        "category": "SQL Programming",
+        "answer": "Facebook, Spotify, Revolut, Twitter, Instagram",
+        "choices": [
+            "Microsoft, Oracle, Druid, CloudDB",
+            "Facebook, Spotify, Revolut, Twitter, Instagram",
+            "IBM, CouchDB, DataGrip",
+            "MySQL, SQLfiddle, Toad"
+        ]
+    },
+    {
+        "question": "What is the difficulty level in learning and using SQL?",
+        "category": "SQL Programming",
+        "answer": "Hard",
+        "choices": [
+            "Hard",
+            "Advanced",
+            "Intermediate",
+            "Easy"
+        ]
+    }
+]

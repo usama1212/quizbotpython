@@ -1,0 +1,167 @@
+[
+  {
+    "question": "What is the output of the following code?\n\nprint(2 + 3 * 4)",
+    "category": "Python Programming",
+    "answer": "14",
+    "choices": [
+      "20",
+      "14",
+      "15",
+      "9"
+    ]
+  },
+  {
+    "question": "Which of the following data types is used to store a single character in Python?",
+    "category": "Python Programming",
+    "answer": "str",
+    "choices": [
+      "char",
+      "character",
+      "str",
+      "letter"
+    ]
+  },
+  {
+    "question": "What does the 'len()' function do in Python?",
+    "category": "Python Programming",
+    "answer": "Returns the total number of elements in a list",
+    "choices": [
+      "Returns the total number of elements in a list",
+      "Returns the sum of elements in a list",
+      "Returns the largest element in a list",
+      "Returns the length of a string"
+    ]
+  },
+  {
+    "question": "Which of the following is used to accept user input in Python?",
+    "category": "Python Programming",
+    "answer": "input()",
+    "choices": [
+      "input()",
+      "get()",
+      "read()",
+      "accept()"
+    ]
+  },
+  {
+    "question": "What is the correct way to comment multiple lines in Python?",
+    "category": "Python Programming",
+    "answer": "# This is a comment",
+    "choices": [
+      "// This is a comment //",
+      "/* This is a comment */",
+      "# This is a comment",
+      "<!-- This is a comment -->"
+    ]
+  },
+    {
+    "question": "What is the purpose of the 'range()' function in Python?",
+    "category": "Python Programming",
+    "answer": "Generate a sequence of numbers",
+    "choices": [
+      "Calculate the factorial of a number",
+      "Generate a sequence of numbers",
+      "Return the remainder of division",
+      "Convert a number to a string"
+    ]
+  },
+  {
+    "question": "Which Python keyword is used to define a function?",
+    "category": "Python Programming",
+    "answer": "def",
+    "choices": [
+      "function",
+      "define",
+      "func",
+      "def"
+    ]
+  },
+  {
+    "question": "What does the 'import' statement do in Python?",
+    "category": "Python Programming",
+    "answer": "Load a module for use in the current program",
+    "choices": [
+      "Define a new variable",
+      "Import data from an external file",
+      "Load a module for use in the current program",
+      "Declare a class"
+    ]
+  },
+  {
+    "question": "In Python, which data type is used to store an unordered collection of unique elements?",
+    "category": "Python Programming",
+    "answer": "set",
+    "choices": [
+      "list",
+      "array",
+      "tuple",
+      "set"
+    ]
+  },
+  {
+    "question": "What is the purpose of the 'elif' keyword in an 'if' statement?",
+    "category": "Python Programming",
+    "answer": "To provide an alternative condition to check if the initial 'if' condition is false",
+    "choices": [
+      "To indicate the end of the 'if' statement",
+      "To introduce a loop",
+      "To provide an alternative condition to check if the initial 'if' condition is false",
+      "To define a function"
+    ]
+  },
+    {
+    "question": "What is the output of the following code?\n\nx = [1, 2, 3]\nprint(x[1])",
+    "category": "Python Programming",
+    "answer": "2",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "IndexError"
+    ]
+  },
+  {
+    "question": "Which method is used to remove an element from a list in Python?",
+    "category": "Python Programming",
+    "answer": "remove()",
+    "choices": [
+      "delete()",
+      "discard()",
+      "remove()",
+      "pop()"
+    ]
+  },
+  {
+    "question": "What does the 'pass' statement do in Python?",
+    "category": "Python Programming",
+    "answer": "It is a placeholder that does nothing",
+    "choices": [
+      "It terminates the current loop",
+      "It raises an exception",
+      "It is a placeholder that does nothing",
+      "It prints the current time"
+    ]
+  },
+  {
+    "question": "Which operator is used for exponentiation in Python?",
+    "category": "Python Programming",
+    "answer": "**",
+    "choices": [
+      "^",
+      "*^",
+      "**",
+      "//"
+    ]
+  },
+  {
+    "question": "What is the purpose of a 'docstring' in Python?",
+    "category": "Python Programming",
+    "answer": "To provide documentation for a function, class, or module",
+    "choices": [
+      "To convert a string to a list of characters",
+      "To format text in a document",
+      "To provide documentation for a function, class, or module",
+      "To create a dynamic list"
+    ]
+  }
+]
