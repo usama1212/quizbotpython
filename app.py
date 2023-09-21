@@ -320,10 +320,12 @@ def quiz_completed():
     suggestions = generate_suggestions(incorrect_answers)
     # suggestions = []
     relevant_websites = get_relevant_websites(topics)
+    relevant_data = get_relevant_websites_and_youtube(topics)
 
     response = {
         "suggestions": suggestions,
-        "relevant_websites": relevant_websites
+        "relevant_websites": relevant_websites,
+        "relevant_data": relevant_data
     }
 
     return jsonify(response)
@@ -351,6 +353,32 @@ def generate_quiz():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+import youtubesearchpython as ytsearch
+
+# ...
+
+# Function to get relevant websites and YouTube video links for topics
+def get_relevant_websites_and_youtube(topics):
+    data = []
+    for topic in topics:
+        search_query = f"learn {topic}"
+
+        # Search for relevant websites
+        search_results = search(search_query, num_results=5)
+        websites_list = list(search_results)
+
+        # Search for relevant YouTube videos
+        youtube_search = ytsearch.VideosSearch(search_query, limit=5)
+        youtube_results = youtube_search.result()
+        youtube_links = [item['link'] for item in youtube_results['result']]
+
+        data.append({
+            "topic": topic,
+            "websites": websites_list,
+            "youtube_links": youtube_links
+        })
+
+    return data
 
 
 
